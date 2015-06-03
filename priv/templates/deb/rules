@@ -47,6 +47,11 @@ install: build
 	    mkdir -p debian/{{package_name}}/usr/{{bin_or_sbin}} && \
 	    {{#package_commands}}install -p -D -m 0755 _build/default/rel/{{package_install_name}}/bin/{{name}} debian/{{package_name}}/usr/{{bin_or_sbin}}/ && \
 	    {{/package_commands}}echo -n; fi
+	
+## copy the start_clean.boot
+	if [ -f _build/default/rel/{{package_install_name}}/bin/start_clean.boot ]; then \
+		cp _build/default/rel/{{package_install_name}}/bin/start_clean.boot \
+				debian/{{package_name}}/usr_lib/{{package_install_name}}
 
 ## install man pages if they exist
 	if [ -d _build/default/doc/man/man1 ]; then \
