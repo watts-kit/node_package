@@ -18,7 +18,7 @@ ROOTDIR := debian/{{package_name}}
 ## the generate command EXECUTES in rel/
 build:
 	unset CC CFLAGS CPPFLAGS LDFLAGS CXX CXXFLAGS \
-		&& OVERLAY_VARS="overlay_vars=../debian/vars.config" make rel
+		&& OVERLAY_VARS="../debian/vars.config" make rel
 	touch build
 
 clean:
