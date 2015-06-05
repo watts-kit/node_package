@@ -71,10 +71,10 @@ cat > rpm.vars.config <<EOF
 EOF
 
 %build
-OVERLAY_VARS="overlay_vars=../rpm.vars.config" make rel
+OVERLAY_VARS="rpm.vars.config" make rel
 
 %install
-%define relpath       %{_builddir}/%{buildsubdir}/rel/{{package_install_name}}
+%define relpath       %{_builddir}/%{buildsubdir}/_build/default/rel/{{package_install_name}}
 %define buildroot_lib %{buildroot}%{_libdir}/{{package_install_name}}
 %define buildroot_etc %{buildroot}%{_sysconfdir}/{{package_install_name}}
 
