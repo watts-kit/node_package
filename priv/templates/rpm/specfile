@@ -93,6 +93,10 @@ if [ -d %{relpath}/bin ]; then \
    find %{relpath}/bin -type f \
         -exec install -p -D -m 0755 {} %{buildroot}%{_{{bin_or_sbin}}dir}/ \; ;fi
 
+# copy the start_clean.boot
+if [ -f %{relpath}/bin/start_clean.boot ]; then \
+    cp %{relpath}/bin/start_clean.boot %{buildroot_lib}; fi
+
 # Scan for manpages that are optional for each command in the package_commands list
 # If found:
 #     * install manpages
