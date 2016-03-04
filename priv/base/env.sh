@@ -26,6 +26,7 @@ RUNNER_PATCH_DIR={{runner_patch_dir}}
 PIPE_DIR={{pipe_dir}}
 RUNNER_USER={{runner_user}}
 APP_VERSION={{app_version}}
+CUTTLEFISH_SCHEMA_DIR={{cuttlefish_schema_dir}}
 
 # Variables needed to support creation of .pid files
 # PID directory and pid file name of this app
@@ -135,7 +136,7 @@ CUTTLEFISH="{{cuttlefish}}"
 if [ -z "$CUTTLEFISH" ]; then
     CUTTLEFISH_COMMAND_PREFIX=""
 else
-    CUTTLEFISH_COMMAND_PREFIX="$ERTS_PATH/escript $ERTS_PATH/cuttlefish -e $RUNNER_ETC_DIR -s $RUNNER_LIB_DIR -d {{platform_data_dir}}/generated.configs -c $RUNNER_ETC_DIR/{{cuttlefish_conf}}"
+    CUTTLEFISH_COMMAND_PREFIX="$ERTS_PATH/escript $ERTS_PATH/cuttlefish -e $RUNNER_ETC_DIR -s $CUTTLEFISH_SCHEMA_DIR -d {{platform_data_dir}}/generated.configs -c $RUNNER_ETC_DIR/{{cuttlefish_conf}}"
 fi
 
 # Ping node without stealing stdin
