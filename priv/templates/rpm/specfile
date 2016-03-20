@@ -44,7 +44,7 @@ Obsoletes: {{package_name}}
 %define platform_base_dir %{_libdir}/{{package_install_name}}
 %define platform_lib_dir %{platform_base_dir}/lib
 %define platform_log_dir %{_localstatedir}/log/{{package_install_name}}
-%define cuttlefish_schema_dir %{_localstatedir}/share/{{package_install_name}}/schema
+%define cuttlefish_schema_dir %{_datarootdir}/{{package_install_name}}/schema
 
 
 %prep
@@ -79,13 +79,14 @@ OVERLAY_VARS="rpm.vars.config" make rel
 %define relpath       %{_builddir}/%{buildsubdir}/_build/default/rel/{{package_install_name}}
 %define buildroot_lib %{buildroot}%{_libdir}/{{package_install_name}}
 %define buildroot_etc %{buildroot}%{_sysconfdir}/{{package_install_name}}
+%define buildroot_share %{buildroot}%{_datarootdir}/{{package_install_name}}
 
 mkdir -p %{buildroot_etc}
 mkdir -p %{buildroot_lib}
+mkdir -p %{buildroot_share}
 mkdir -p %{buildroot}%{_localstatedir}/lib/{{package_install_name}}
 mkdir -p %{buildroot}%{_localstatedir}/log/{{package_install_name}}
 mkdir -p %{buildroot}%{_localstatedir}/run/{{package_install_name}}
-mkdir -p %{buildroot}%{_localstatedir}/share/{{package_install_name}}
 
 cp -R %{relpath}/lib       %{buildroot_lib}
 cp -R %{relpath}/erts-*    %{buildroot_lib}
@@ -115,14 +116,11 @@ if [ -d %{_builddir}/%{buildsubdir}/doc/man/man1 ]; then \
    {{/package_commands}}echo -n; fi
 
 cp -R %{relpath}/etc/* %{buildroot_etc}
+cp -R %{relpath}/share/* %{buildroot_share}
 
 mkdir -p %{buildroot}%{_localstatedir}/lib/{{package_install_name}}
 cp -R %{relpath}/data/* \
       %{buildroot}%{_localstatedir}/lib/{{package_install_name}}
-
-mkdir -p %{buildroot}%{_localstatedir}/share/{{package_install_name}}
-cp -R %{relpath}/share/* \
-      %{buildroot}%{_localstatedir}/share/{{package_install_name}}
 
 mkdir -p %{buildroot}%{_sysconfdir}/init.d
 install -m755 %{_topdir}/init.script  %{buildroot}%{_sysconfdir}/init.d/{{package_install_name}}
