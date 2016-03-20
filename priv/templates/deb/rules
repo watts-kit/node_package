@@ -72,6 +72,10 @@ install: build
 	cp -R _build/default/rel/{{package_install_name}}/data/* \
               debian/{{package_name}}/var/lib/{{package_install_name}}
 
+	mkdir -p debian/{{package_name}}/usr/share
+	cp -R _build/default/rel/{{package_install_name}}/share/* \
+			  debian/{{package_name}}/usr/share/{{package_install_name}}
+
 	install -m755 debian/init.script \
               debian/{{package_name}}/etc/init.d/{{package_install_name}}
 

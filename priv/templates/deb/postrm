@@ -31,6 +31,9 @@ case "$1" in
         if [ -d /etc/{{package_install_name}} ]; then
                 rm -r /etc/{{package_install_name}}
         fi
+        if [ -d /usr/share/{{package_install_name}} ]; then
+                rm -r /usr/share/{{package_install_name}}
+        fi
         if [ -e /etc/init.d/{{package_install_name}} ]; then
                 rm  /etc/init.d/{{package_install_name}}
         fi
