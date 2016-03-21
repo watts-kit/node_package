@@ -118,6 +118,8 @@ if [ -d %{_builddir}/%{buildsubdir}/doc/man/man1 ]; then \
 cp -R %{relpath}/etc/* %{buildroot_etc}
 cp -R %{relpath}/share/* %{buildroot_share}
 
+echo "%{_datarootdir}/{{package_install_name}/*" >> additional_files_list
+
 mkdir -p %{buildroot}%{_localstatedir}/lib/{{package_install_name}}
 cp -R %{relpath}/data/* \
       %{buildroot}%{_localstatedir}/lib/{{package_install_name}}
