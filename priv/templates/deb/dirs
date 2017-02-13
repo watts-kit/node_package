@@ -1,6 +1,2 @@
 etc/logrotate.d
-usr/lib/{{package_install_name}}
-usr/share/{{package_install_name}}
-var/run/{{package_install_name}}
-var/lib/{{package_install_name}}
 var/log/{{package_install_name}}

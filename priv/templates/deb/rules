@@ -34,51 +34,6 @@ install: build
 	dh_testroot
 	dh_prep
 	dh_installdirs
-
-	cp -R _build/default/rel/{{package_install_name}}/lib \
-              debian/{{package_name}}/usr/lib/{{package_install_name}}
-
-	cp -R _build/default/rel/{{package_install_name}}/erts* \
-              debian/{{package_name}}/usr/lib/{{package_install_name}}
-
-	cp -R _build/default/rel/{{package_install_name}}/releases \
-              debian/{{package_name}}/usr/lib/{{package_install_name}}
-
-## executables
-	if [ -d _build/default/rel/{{package_install_name}}/bin ]; then \
-	    mkdir -p debian/{{package_name}}/usr/{{bin_or_sbin}} && \
-	    {{#package_commands}}install -p -D -m 0755 _build/default/rel/{{package_install_name}}/bin/{{name}} debian/{{package_name}}/usr/{{bin_or_sbin}}/ && \
-	    {{/package_commands}}echo -n; fi
-	
-## copy the start_clean.boot
-	if [ -f _build/default/rel/{{package_install_name}}/bin/start_clean.boot ]; then \
-		cp _build/default/rel/{{package_install_name}}/bin/start_clean.boot \
-				debian/{{package_name}}/usr/lib/{{package_install_name}}; fi
-
-## install man pages if they exist
-	if [ -d _build/default/doc/man/man1 ]; then \
-	    mkdir -p debian/usr/share/man/man1 && \
-	    {{#package_commands}}if [ -f _build/default/doc/man/man1/{{name}}.1.gz ]; then \
-                                     install -p -D -m 0544 _build/default/doc/man/man1/{{name}}.1.gz \
-                                             debian/{{package_name}}/usr/share/man/man1/ \
-                                 ; fi && \
-	    {{/package_commands}}echo -n; fi
-
-	mkdir -p debian/{{package_name}}/etc/{{package_install_name}}
-	cp -R _build/default/rel/{{package_install_name}}/etc/* \
-              debian/{{package_name}}/etc/{{package_install_name}}
-
-	mkdir -p debian/{{package_name}}/var/lib
-	cp -R _build/default/rel/{{package_install_name}}/data/* \
-              debian/{{package_name}}/var/lib/{{package_install_name}}
-
-	mkdir -p debian/{{package_name}}/usr/share
-	cp -R _build/default/rel/{{package_install_name}}/share/* \
-			  debian/{{package_name}}/usr/share/{{package_install_name}}
-
-	install -m755 debian/init.script \
-              debian/{{package_name}}/etc/init.d/{{package_install_name}}
-
 	dh_install
 	dh_installman
 	dh_installinit --name={{package_install_name}} --no-start
@@ -91,7 +46,6 @@ install: build
 		fi; \
 	done
 	chmod -R go+rX debian/{{package_name}}/usr/lib/{{package_install_name}}/lib/
-
 	dh_shlibdeps
 
 # We have nothing to do by default.
