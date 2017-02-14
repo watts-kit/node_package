@@ -1,2 +1,3 @@
 etc/logrotate.d
+usr/lib/{{package_install_name}}
 var/log/{{package_install_name}}
