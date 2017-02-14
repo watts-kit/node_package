@@ -33,6 +33,10 @@ install: build
 	dh_testdir
 	dh_testroot
 	dh_prep
+	## copy the start_clean.boot
+	if [ -f _build/default/rel/{{package_install_name}}/bin/start_clean.boot ]; then \
+		cp _build/default/rel/{{package_install_name}}/bin/start_clean.boot \
+	fi; \
 	dh_installdirs
 	dh_install
 	dh_installman
