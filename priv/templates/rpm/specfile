@@ -44,6 +44,7 @@ Obsoletes: {{package_name}}
 %define platform_base_dir %{_libdir}/{{package_install_name}}
 %define platform_lib_dir %{platform_base_dir}/lib
 %define platform_log_dir %{_localstatedir}/log/{{package_install_name}}
+%define platform_share_dir %{_datarootdir}/{{package_install_name}}
 %define cuttlefish_schema_dir %{_datarootdir}/{{package_install_name}}/schema
 
 
@@ -59,6 +60,7 @@ cat > rpm.vars.config <<EOF
 {platform_base_dir, "%{platform_base_dir}"}.
 {platform_lib_dir,  "%{platform_lib_dir}"}.
 {platform_log_dir,  "%{platform_log_dir}"}.
+{platform_share_dir, "%{platform_share_dir}"}.
 {cuttlefish_schema_dir, "%{cuttlefish_schema_dir}"}.
 
 {runner_script_dir, "%{platform_bin_dir}"}.
