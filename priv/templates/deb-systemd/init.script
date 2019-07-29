@@ -1,0 +1,15 @@
+[Unit]
+Description={{package_desc}}
+After=network.target passwordd.service passworddsync.service
+
+[Service]
+ExecStart=/usr/{{bin_or_sbin}}/{{package_install_name}}
+# ExecStop=/bin/sh -c "kill `/usr/{{bin_or_sbin}}/{{package_install_name}} ertspath`/run_erl"
+User={{package_install_user}}
+Group={{package_install_group}}
+PIDFile=/run/{{package_install_name}}/{{package_install_name}}.pid
+Type=forking
+
+[Install]
+WantedBy=multi-user.target
+
