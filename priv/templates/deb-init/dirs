@@ -1,4 +1,4 @@
-lib/systemd/system
+etc/init.d
 etc/{{package_install_name}}
 etc/logrotate.d
 usr/lib/{{package_install_name}}

@@ -24,7 +24,7 @@ case "$1" in
         rm -f /etc/default/{{package_install_name}}
 
         # ensure we remove the rc.d scripts installed by postinst
-        update-rc.d {{package_install_name}} remove >/dev/null
+        systemctl disable {{package_install_name}}
 
         if [ -d /var/log/{{package_install_name}} ]; then
                 rm -r /var/log/{{package_install_name}}
@@ -35,11 +35,8 @@ case "$1" in
         if [ -d /etc/{{package_install_name}} ]; then
                 rm -r /etc/{{package_install_name}}
         fi
-        if [ -d /usr/share/{{package_install_name}} ]; then
-                rm -r /usr/share/{{package_install_name}}
-        fi
-        if [ -e /etc/init.d/{{package_install_name}} ]; then
-                rm  /etc/init.d/{{package_install_name}}
+        if [ -e /lib/systemd/system/{{package_install_name}}.service ]; then
+                rm  /lib/systemd/system/{{package_install_name}}.service
         fi
         # Remove User & Group, killing any process owned by them
         if getent passwd {{package_install_user}} >/dev/null; then
