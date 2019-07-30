@@ -75,7 +75,7 @@ install: build
 			  debian/{{package_name}}/usr/share/{{package_install_name}}
 
 	install -m755 debian/init.script \
-              debian/{{package_name}}/etc/init.d/{{package_install_name}}
+              debian/{{package_name}}/lib/systemd/system/{{package_install_name}}.service
 
 	dh_shlibdeps
 
