@@ -22,7 +22,7 @@ BUILDDIR      = rpmbuild
 else
 ifneq ($(ISDEB),)
 OSNAME        = Debian
-PKGERDIR      = deb
+PKGERDIR      = deb-systemd
 BUILDDIR      = debuild
 else
 ifneq ($(ISSLES),)
