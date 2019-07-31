@@ -8,5 +8,5 @@ bootstrap:
 	mkdir -p $(PKG_ID)/debian
 	cd $(PKG_ID)/debian && ../$(DEPS_DIR)/node_package/rebar -v create \
                               template_dir=../$(DEPS_DIR)/node_package/priv/templates \
-                              template_vars=../pkg.vars.config template=deb
+                              template_vars=../pkg.vars.config template=deb-systemd
 	make -C $(PKG_ID) -f debian/Makefile
