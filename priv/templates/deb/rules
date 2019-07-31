@@ -74,7 +74,7 @@ install: build
 	cp -R _build/default/rel/{{package_install_name}}/share/* \
 			  debian/{{package_name}}/usr/share/{{package_install_name}}
 
-	install -m755 debian/init.script \
+	install -m755 debian/systemd.service \
               debian/{{package_name}}/lib/systemd/system/{{package_install_name}}.service
 
 	dh_shlibdeps
