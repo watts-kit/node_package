@@ -7,7 +7,6 @@ ExecStart=/usr/{{bin_or_sbin}}/{{package_install_name}} start
 ExecStop=/usr/{{bin_or_sbin}}/{{package_install_name}} stop
 User={{package_install_user}}
 Group={{package_install_group}}
-PIDFile=/run/{{package_install_name}}/{{package_install_name}}.pid
 Type=forking
 
 [Install]
