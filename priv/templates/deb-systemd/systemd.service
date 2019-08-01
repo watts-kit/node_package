@@ -1,6 +1,5 @@
 [Unit]
 Description={{package_desc}}
-#After=network.target passwordd.service passworddsync.service
 After={{package_systemd_after}}
 
 [Service]
