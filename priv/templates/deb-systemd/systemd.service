@@ -1,6 +1,7 @@
 [Unit]
 Description={{package_desc}}
-After=network.target passwordd.service passworddsync.service
+#After=network.target passwordd.service passworddsync.service
+After={{package_systemd_after}}
 
 [Service]
 ExecStart=/usr/{{bin_or_sbin}}/{{package_install_name}} start
